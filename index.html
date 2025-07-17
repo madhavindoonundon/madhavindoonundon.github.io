@@ -29,18 +29,20 @@
     }
 
     h3 {
-      margin-top: 40px;
+      margin-top: 50px;
       font-size: 1.4rem;
       color: #111827;
     }
 
     p {
       margin-bottom: 15px;
+      font-size: 1rem;
     }
 
     ul {
       list-style: disc inside;
       margin-top: 10px;
+      padding-left: 10px;
     }
 
     a {
@@ -56,9 +58,11 @@
 
     /* BUTTON STYLES */
     .button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       padding: 10px 20px;
-      margin-top: 10px;
+      margin: 10px 0;
       font-size: 16px;
       color: #ffffff;
       background-color: #1f2937;
@@ -66,6 +70,12 @@
       border-radius: 6px;
       text-decoration: none;
       transition: background-color 0.3s ease;
+    }
+
+    .button svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
     }
 
     .button:hover {
@@ -82,12 +92,12 @@
     }
 
     .text-content {
-      flex: 1 1 50%;
-      min-width: 300px;
+      flex: 1 1 60%;
+      min-width: 320px;
     }
 
     .image-container {
-      flex: 1 1 40%;
+      flex: 1 1 35%;
       min-width: 300px;
     }
 
@@ -99,7 +109,7 @@
     }
 
     .team {
-      margin-top: 50px;
+      margin-top: 60px;
       background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
@@ -119,21 +129,28 @@
         D-RAN, C-RAN, and Cloud C-RAN.
       </p>
 
-      <p>📎 Download the software:</p>
-      <a class="button" href="https://www.google.com" target="_blank">5G – POWER – TOOL</a>
+      <a class="button" href="https://www.google.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M8.5 13.5v-9a.5.5 0 0 1 1 0v9l3.15-3.15a.5.5 0 0 1 .7.7l-4 4a.5.5 0 0 1-.7 0l-4-4a.5.5 0 1 1 .7-.7L8.5 13.5z"/></svg>
+        Download Tool
+      </a>
 
       <p>The software is distributed as a standalone executable file.</p>
 
-      <p>▶️ Watch the video demo:</p>
-      <a class="button" href="https://www.yahoo.com" target="_blank">PLAY DEMO</a>
+      <a class="button" href="https://www.yahoo.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M4.5 4a.5.5 0 0 1 .8-.4l9 6a.5.5 0 0 1 0 .8l-9 6a.5.5 0 0 1-.8-.4V4z"/></svg>
+        Watch Demo
+      </a>
 
-      <p>📖 Refer to our open-source paper on 5G Power Modeling:<br>
-        <a href="https://doi.org/10.3390/math13030466" target="_blank">https://doi.org/10.3390/math13030466</a>
+      <p>
+        Refer to our open-access paper on 5G Power Modeling:<br>
+        <a href="https://doi.org/10.3390/math13030466" target="_blank">
+          https://doi.org/10.3390/math13030466
+        </a>
       </p>
     </div>
 
     <div class="image-container">
-      <img src="matlab-power.png" alt="5G Tool Screenshot">
+      <img src="matlab-power.png" alt="Screenshot of MATLAB-based 5G Power Modeling Tool">
     </div>
   </div>
 
