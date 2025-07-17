@@ -10,9 +10,11 @@
       background-color: #f5f5f5;
       color: #333;
     }
+
     h1 {
       color: #003366;
     }
+
     .button {
       display: inline-block;
       padding: 10px 20px;
@@ -24,21 +26,45 @@
       border-radius: 6px;
       text-decoration: none;
     }
+
     .button:hover {
       background-color: #333;
     }
-    .image-container {
-      margin-top: 20px;
-    }
-    .team {
-      margin-top: 30px;
-    }
+
     .link {
       color: #0066cc;
       text-decoration: none;
     }
+
     .link:hover {
       text-decoration: underline;
+    }
+
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .text-content {
+      flex: 1 1 50%;
+      min-width: 300px;
+    }
+
+    .image-container {
+      flex: 1 1 40%;
+      min-width: 300px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .team {
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -46,33 +72,37 @@
 
   <h1>Educational Tool for 5G Power Consumption Modelling</h1>
 
-  <p>
-    This project presents a software application for <strong>5G NR Power Modeling</strong> developed in MATLAB.
-    The tool includes an interactive GUI enabling users to compare power consumption across 5G architectures:
-    D-RAN, C-RAN, and Cloud C-RAN.
-  </p>
+  <div class="main-container">
+    <div class="text-content">
+      <p>
+        This project presents a software application for <strong>5G NR Power Modeling</strong> developed in MATLAB.
+        The tool includes an interactive GUI enabling users to compare power consumption across 5G architectures:
+        D-RAN, C-RAN, and Cloud C-RAN.
+      </p>
 
-  <p>
-    📎 Download the software:
-    <a class="button" href="https://www.google.com" target="_blank">5G – POWER – TOOL</a>
-  </p>
+      <p>
+        📎 Download the software:
+        <a class="button" href="https://www.google.com" target="_blank">5G – POWER – TOOL</a>
+      </p>
 
-  <p>The software is distributed as a standalone executable file.</p>
+      <p>The software is distributed as a standalone executable file.</p>
 
-  <p>
-    ▶️ Watch the video demo:
-    <a class="button" href="https://www.yahoo.com" target="_blank">PLAY DEMO</a>
-  </p>
+      <p>
+        ▶️ Watch the video demo:
+        <a class="button" href="https://www.yahoo.com" target="_blank">PLAY DEMO</a>
+      </p>
 
-  <p>
-    📖 Refer to our open-source paper on 5G Power Modeling:
-    <a class="link" href="https://doi.org/10.3390/math13030466" target="_blank">
-      https://doi.org/10.3390/math13030466
-    </a>
-  </p>
+      <p>
+        📖 Refer to our open-source paper on 5G Power Modeling:
+        <a class="link" href="https://doi.org/10.3390/math13030466" target="_blank">
+          https://doi.org/10.3390/math13030466
+        </a>
+      </p>
+    </div>
 
-  <div class="image-container">
-    <img src="matlab-power.png" alt="5G Tool Screenshot" width="800">
+    <div class="image-container">
+      <img src="images/matlab-power.png" alt="5G Tool Screenshot">
+    </div>
   </div>
 
   <div class="team">
