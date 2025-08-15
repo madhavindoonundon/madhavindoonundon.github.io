@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YDFWKGEXLY');
-    </script>
     
     <meta charset="UTF-8">
     <title>Educational Tool for 5G Power Consumption Modelling</title>
@@ -228,4 +222,5 @@
 
 </body>
 </html>
+
 
