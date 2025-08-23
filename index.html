@@ -1,231 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDFWKGEXLY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YDFWKGEXLY');
-    </script>
-    
-    <meta charset="UTF-8">
-    <title>Educational Tool for 5G Power Consumption Modelling</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS Custom Properties, Reset, Layout, Typography, and Components styles remain the same... */
-        :root {
-            --color-primary: #3B82F6; --color-primary-dark: #2563EB; --color-secondary: #1F2937; --color-secondary-light: #4B5563; --color-light: #F9FAFB; --color-white: #FFFFFF; --color-border: #E5E7EB; --font-heading: 'Poppins', sans-serif; --font-body: 'Inter', sans-serif; --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05); --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); --border-radius: 12px; --transition-speed: 0.3s;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-body); background-color: var(--color-light); color: var(--color-secondary); line-height: 1.7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
-        header { text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #f0f4ff, #e6e9f0); border-bottom: 1px solid var(--color-border); margin-bottom: 3rem; }
-        .main-content { display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; }
-        .text-content { flex: 1 1 55%; min-width: 320px; }
-        .media-container { flex: 1 1 40%; min-width: 300px; }
-        h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.25rem); color: var(--color-secondary); line-height: 1.2; margin-bottom: 1rem; }
-        header p { font-size: 1.125rem; color: var(--color-secondary-light); max-width: 60ch; margin: 0 auto; }
-        h3 { font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-secondary); margin-bottom: 1.5rem; }
-        p, ul { font-size: 1rem; color: var(--color-secondary-light); margin-bottom: 1.5rem; }
-        a { color: var(--color-primary); font-weight: 500; text-decoration: none; position: relative; transition: color var(--transition-speed) ease; }
-        a::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: -4px; left: 0; background-color: var(--color-primary); transform: scaleX(0); transform-origin: bottom right; transition: transform var(--transition-speed) ease-out; }
-        a:hover { color: var(--color-primary-dark); }
-        a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
-        .button { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1.5rem; margin: 0.5rem 0; font-size: 1rem; font-weight: 500; color: var(--color-white); background-color: var(--color-primary); border: none; border-radius: 8px; text-decoration: none; cursor: pointer; transition: all var(--transition-speed) ease; box-shadow: var(--shadow-md); }
-        .button:hover, .button:focus { background-color: var(--color-primary-dark); transform: translateY(-3px); box-shadow: var(--shadow-lg); color: var(--color-white); }
-        .button::after, .button:hover::after { display: none; }
-        .button svg { width: 20px; height: 20px; fill: currentColor; }
-        .media-container img { width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); transition: all var(--transition-speed) ease; }
-        .media-container img:hover { transform: scale(1.03); }
-        .card { margin-top: 3rem; background-color: var(--color-white); padding: 2.5rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md); transition: all var(--transition-speed) ease; }
-        .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
-        .card ul { list-style: none; padding: 0; margin: 0; }
-        .card li { padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); color: var(--color-secondary-light); }
-        .card li:last-child { border-bottom: none; }
-        .card li strong { color: var(--color-secondary); }
 
-        /* ------------------------- */
-        /* --- Modal Styles --- */
-        /* ------------------------- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YDFWKGEXLY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        .modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+  gtag('config', 'G-YDFWKGEXLY');
+</script>
 
-        .modal-content {
-            background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            width: 90%;
-            max-width: 500px;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
+  
+  <meta charset="UTF-8">
+  <title>Educational Tool for 5G Power Consumption Modelling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* RESET + BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .modal-content h2 {
-            font-family: var(--font-heading);
-            color: var(--color-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .modal-content p {
-            color: var(--color-secondary-light);
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
+    h1 {
+      color: #1d4ed8;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
 
-        .modal-buttons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-        }
+    h3 {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #111827;
+    }
 
-        .modal-buttons .button {
-            margin: 0;
-        }
+    p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
 
-        .modal-buttons .btn-secondary {
-            background-color: var(--color-border);
-            color: var(--color-secondary-light);
-        }
-        
-        .modal-buttons .btn-secondary:hover {
-            background-color: #d1d5db;
-            color: var(--color-secondary);
-        }
+    ul {
+      list-style: disc inside;
+      margin-top: 10px;
+      padding-left: 10px;
+    }
 
-    </style>
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #1d4ed8;
+    }
+
+    /* BUTTON STYLES */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #1f2937;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .button svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+    }
+
+    .button:hover {
+      background-color: #111827;
+    }
+
+    /* FLEX CONTAINER */
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+
+    .text-content {
+      flex: 1 1 60%;
+      min-width: 320px;
+    }
+
+    .image-container {
+      flex: 1 1 35%;
+      min-width: 300px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .team {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      width: 100%;           /* Fill the page width */
+      max-width: none;       /* Remove max-width restriction */
+      box-sizing: border-box;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      gap: 28px;
+      margin-top: 28px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Responsive: 1 column on small screens */
+    @media (max-width: 900px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .team-member {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      background-color: #f9fafb;
+      padding: 32px 28px;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      transition: transform 0.2s ease;
+      gap: 32px;
+      min-height: 220px;
+      min-width: 0;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 170px;
+      border-radius: 0;
+      object-fit: cover;
+      margin-bottom: 0;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .team-member h4 {
+      font-size: 1.25rem;
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .team-member p {
+      font-size: 1.05rem;
+      color: #374151;
+      margin: 0;
+    }
+
+    .team-member.empty-tile {
+      background: transparent;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .team-links {
+      margin-top: 14px;
+      display: flex;
+      gap: 18px;
+    }
+    .team-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef2ff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      transition: background 0.2s;
+    }
+    .team-links a:hover {
+      background: #dbeafe;
+    }
+
+    .funding-info {
+      margin-top: 36px;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 1.08rem;
+    }
+
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>5G Power Consumption Modelling</h1>
-        <p>An interactive educational tool for comparing power consumption across D-RAN, C-RAN, and Cloud C-RAN architectures.</p>
-    </header>
+  <h1>Educational Tool for 5G Power Consumption Modelling</h1>
 
-    <main class="container">
-        <div class="main-content">
-            <div class="text-content">
-                <p>This project presents a software application for <strong>5G NR Power Modeling</strong> developed in MATLAB. The tool includes an interactive GUI enabling users to explore and compare different 5G network architectures.</p>
-                
-                <p>The software is distributed as a standalone executable file, making it accessible without a MATLAB license.</p>
+  <div class="main-container">
+    <div class="text-content">
+      <p>
+        This project presents a software application for <strong>5G NR Power Modeling</strong> developed in MATLAB.
+        The tool includes an interactive GUI enabling users to compare power consumption across 5G architectures:
+        D-RAN, C-RAN, and Cloud C-RAN.
+      </p>
 
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
-                    <a id="downloadBtn" class="button" href="https://www.google.com" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 112 0v4a1 1 0 11-2 0V9zM9 5.5a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd" /></svg>
-                        Download Tool
-                    </a>
-                    <a class="button" href="https://www.yahoo.com" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
-                        Watch Demo
-                    </a>
-                </div>
+      <a class="button" href="https://www.google.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M8.5 13.5v-9a.5.5 0 0 1 1 0v9l3.15-3.15a.5.5 0 0 1 .7.7l-4 4a.5.5 0 0 1-.7 0l-4-4a.5.5 0 1 1 .7-.7L8.5 13.5z"/></svg>
+        Download Tool
+      </a>
 
-                <p>For an in-depth understanding, please refer to our open-access publication:</p>
-                <p>
-                    <a href="https://doi.org/10.3390/math13030466" target="_blank">
-                        Mathematical Modeling for 5G Power Consumption
-                    </a>
-                </p>
-            </div>
+      <p>The software is distributed as a standalone executable file.</p>
 
-            <div class="media-container">
-                <img src="matlab-power.png" alt="Screenshot of the MATLAB-based 5G Power Modeling Tool GUI">
-            </div>
-        </div>
+      <a class="button" href="https://www.yahoo.com" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M4.5 4a.5.5 0 0 1 .8-.4l9 6a.5.5 0 0 1 0 .8l-9 6a.5.5 0 0 1-.8-.4V4z"/></svg>
+        Watch Demo
+      </a>
 
-        <div class="card">
-            <h3>The Project Team</h3>
-            <ul>
-                <li><strong>Dr. Mobayode Akinsolu</strong>, Senior Lecturer, Wrexham University</li>
-                <li><strong>Assoc. Prof. (Dr) Tulsi Pawan Fowdur</strong>, University of Mauritius</li>
-                <li><strong>Mr. Arvind Doorgakant</strong>, PhD Scholar, University of Mauritius</li>
-                <li><strong>Dr. Madhavsingh Indoonundon</strong>, University of Mauritius</li>
-                <li><strong>Dr. Ray Ezechi</strong>, University of Wrexham</li>
-            </ul>
-        </div>
-    </main>
-
-    <div id="disclaimerModal" class="modal-overlay">
-        <div class="modal-content">
-            <h2>Disclaimer</h2>
-            <p>This software is provided "as is" for educational purposes only. The authors and their institutions are not liable for any issues, damages, or losses arising from its use. By clicking "Accept & Download," you agree to these terms.</p>
-            <div class="modal-buttons">
-                <button id="declineBtn" class="button btn-secondary">Decline</button>
-                <button id="acceptBtn" class="button">Accept & Download</button>
-            </div>
-        </div>
+      <p>
+        For a more in-depth understanding and additional details, please refer to our open-access publications:<br>
+        <a href="https://doi.org/10.3390/math13030466" target="_blank">
+          End-to-End Power Models for 5G Radio Access Network Architectures with a Perspective on 6G
+        </a>
+        <br>
+        <em>
+          Doorgakant, B., Fowdur, T.P. and Akinsolu, M.O., 2025. End-to-End Power Models for 5G Radio Access Network Architectures with a Perspective on 6G. Mathematics, 13(3), p.466.
+        </em>
+      </p>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const downloadBtn = document.getElementById('downloadBtn');
-            const modal = document.getElementById('disclaimerModal');
-            const acceptBtn = document.getElementById('acceptBtn');
-            const declineBtn = document.getElementById('declineBtn');
+    <div class="image-container">
+      <img src="matlab-power.png" alt="Screenshot of MATLAB-based 5G Power Modeling Tool">
+    </div>
+  </div>
 
-            if (downloadBtn && modal && acceptBtn && declineBtn) {
-                // Function to show the modal
-                const showModal = (e) => {
-                    e.preventDefault(); // Prevent the link from navigating
-                    modal.classList.add('visible');
-                };
+  <div class="team">
+    <h3>The Project Team</h3>
+    <div class="team-grid">
+      
+      <div class="team-member">
+        <img src="mobayode.jpeg" alt="Dr. Mobayode Akinsolu">
+        <div>
+          <h4>Dr. Mobayode Akinsolu</h4>
+          <p>
+            Principal Investigator<br>
+            Reader in Applied Artificial Intelligence and Electronic Engineering<br>
+            Faculty of Arts, Computing and Engineering, Wrexham University, Wrexham, LL11 2AW UK
+          </p>
+          <div class="team-links">
+            <a href="mailto:Mobayode.Akinsolu@wrexham.ac.uk" title="Email" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-1.25a1.25 1.25 0 0 0-1.25 1.25v.637l8.25 5.5 8.25-5.5v-.637a1.25 1.25 0 0 0-1.25-1.25H4.75Zm15.25 3.363-7.72 5.15a.75.75 0 0 1-.81 0L3.75 8.863V17.25c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V8.863Z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=EyhHPWEAAAAJ&hl=en" title="Profile" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 1 1-10 0V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3Zm-7 15a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Zm2 .5V19h10v-.5a5 5 0 0 0-10 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-                // Function to hide the modal
-                const hideModal = () => {
-                    modal.classList.remove('visible');
-                };
+      <div class="team-member">
+        <img src="fowdur.jpeg" alt="Dr. Tulsi Pawan Fowdur">
+        <div>
+          <h4>Associate Professor (Dr) Tulsi Pawan Fowdur</h4>
+          <p>Co-Investigator<br>
+              Associate Professor in Telecommunications Engineering and AI<br>
+              Department of Electrical and Electronic Engineering<br>
+              Faculty of Engineering<br>
+              University of Mauritius
+          </p>
+          <div class="team-links">
+            <a href="mailto:p.fowdur@uom.ac.mu" title="Email" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-1.25a1.25 1.25 0 0 0-1.25 1.25v.637l8.25 5.5 8.25-5.5v-.637a1.25 1.25 0 0 0-1.25-1.25H4.75Zm15.25 3.363-7.72 5.15a.75.75 0 0 1-.81 0L3.75 8.863V17.25c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V8.863Z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&user=Zxiiw0kAAAAJ&view_op=list_works&authuser=1&sortby=pubdate" title="Profile" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 1 1-10 0V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3Zm-7 15a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Zm2 .5V19h10v-.5a5 5 0 0 0-10 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-                // Show modal on download button click
-                downloadBtn.addEventListener('click', showModal);
+      <div class="team-member">
+        <img src="arvind.jpeg" alt="Mr. Arvind Doorgakant">
+        <div>
+          <h4>Mr. Arvind Doorgakant</h4>
+          <p>Research Assoicate<br>
+              PhD Candidate in Telecommunications Engineering<br>
+              University of Mauritius
+          </p>
+          <div class="team-links">
+            <a href="mailto:bhuvaneshwar.doorgakant3@umail.uom.ac.mu" title="Email" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-1.25a1.25 1.25 0 0 0-1.25 1.25v.637l8.25 5.5 8.25-5.5v-.637a1.25 1.25 0 0 0-1.25-1.25H4.75Zm15.25 3.363-7.72 5.15a.75.75 0 0 1-.81 0L3.75 8.863V17.25c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V8.863Z"/></svg>
+            </a>
+            <a href="#" title="Profile" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 1 1-10 0V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3Zm-7 15a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Zm2 .5V19h10v-.5a5 5 0 0 0-10 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-                // Hide modal on decline
-                declineBtn.addEventListener('click', hideModal);
+      <div class="team-member">
+        <img src="madhav.jpeg" alt="Dr. Madhavsingh Indoonundon">
+        <div>
+          <h4>Dr. Madhavsingh Indoonundon</h4>
+          <p>Research Assoicate<br>
+            Researcher in Telecommunications Engineering<br>
+            University of Mauritius
+          </p>
+          <div class="team-links">
+            <a href="mailto:madhavsingh.indoonundon1@umail.uom.ac.mu" title="Email" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-1.25a1.25 1.25 0 0 0-1.25 1.25v.637l8.25 5.5 8.25-5.5v-.637a1.25 1.25 0 0 0-1.25-1.25H4.75Zm15.25 3.363-7.72 5.15a.75.75 0 0 1-.81 0L3.75 8.863V17.25c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V8.863Z"/></svg>
+            </a>
+            <a href="https://orcid.org/0000-0002-5903-477X" title="Profile" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 1 1-10 0V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3Zm-7 15a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Zm2 .5V19h10v-.5a5 5 0 0 0-10 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-                // Hide modal and proceed with download on accept
-                acceptBtn.addEventListener('click', () => {
-                    hideModal();
-                    // Proceed to the download link
-                    window.open(downloadBtn.href, '_blank');
-                });
+      <div class="team-member">
+        <img src="ray.jpeg" alt="Mr. Chekwube Ezechi (Research Associate)">
+        <div>
+          <h4>Mr. Chekwube Ezechi</h4>
+          <p>
+            Research Assoicate<br>
+            PhD Candidate in Computer Science<br>
+            Faculty of Natural and Applied Sciences, Lead City University, Ibadan 200255, Oyo State, Nigeria.
+          </p>
+          <div class="team-links">
+            <a href="mailto:chekwube.ezechi@lcu.edu.ng" title="Email" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h14.5A2.75 2.75 0 0 1 22 6.75v10.5A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25V6.75Zm2.75-1.25a1.25 1.25 0 0 0-1.25 1.25v.637l8.25 5.5 8.25-5.5v-.637a1.25 1.25 0 0 0-1.25-1.25H4.75Zm15.25 3.363-7.72 5.15a.75.75 0 0 1-.81 0L3.75 8.863V17.25c0 .69.56 1.25 1.25 1.25h14.5c.69 0 1.25-.56 1.25-1.25V8.863Z"/></svg>
+            </a>
+            <a href="https://scholar.google.com/citations?user=_gxpUqwAAAAJ&hl=en" title="Profile" target="_blank">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#2563eb" d="M12 2a5 5 0 0 1 5 5v1a5 5 0 1 1-10 0V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v1a3 3 0 1 0 6 0V7a3 3 0 0 0-3-3Zm-7 15a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Zm2 .5V19h10v-.5a5 5 0 0 0-10 0Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-                // Optional: Hide modal if user clicks on the overlay
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        hideModal();
-                    }
-                });
-            }
-        });
-    </script>
+      <!-- Empty tile for 6th slot -->
+      <div class="team-member empty-tile"></div>
+
+    </div>
+  </div>
+
+  <div class="funding-info">
+    <h3 style="margin-top:0; color:#1d4ed8;">Funding & Support</h3>
+    <ul style="list-style: none; padding-left: 0; margin-top: 16px;">
+      <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2563eb" opacity="0.12"/><path fill="#2563eb" d="M17 9.5V8a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v1.5a2 2 0 0 0 1 1.73V16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4.77a2 2 0 0 0 1-1.73ZM9 8h6v1.5H9V8Zm4 8h-2v-4h2v4Z"/></svg>
+        2025 FACE QR Research Funding Award, Wrexham University, U.K.
+      </li>
+      <li style="display: flex; align-items: center; gap: 10px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2563eb" opacity="0.12"/><path fill="#2563eb" d="M17 9.5V8a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v1.5a2 2 0 0 0 1 1.73V16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4.77a2 2 0 0 0 1-1.73ZM9 8h6v1.5H9V8Zm4 8h-2v-4h2v4Z"/></svg>
+        2024 FACE QR Research Funding Award, Wrexham University, U.K.
+      </li>
+    </ul>
+  </div>
 
 </body>
 </html>
